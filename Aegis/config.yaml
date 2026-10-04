@@ -1,0 +1,76 @@
+model:
+  base_model: ../models/Qwen2.5-7B
+  manifest: ../models/model_manifest.json
+  use_lora: true
+  lora_r: 8
+  lora_alpha: 16
+  lora_dropout: 0.1
+  target_modules:
+  - q_proj
+  - v_proj
+  hidden_size: 3584
+  use_fp16: true
+  comm_rounds: 2
+  comm_heads: 4
+  attn_dropout: 0.0
+  ff_dropout: 0.0
+  fuse_mode: mean
+  use_self_mask: false
+  use_gate: true
+  quantization: 4bit
+  gradient_checkpointing: true
+  num_agents: 4
+experiment:
+  method_id: aegis_neural_v1
+  dataset: pheme_teacher
+  pseudo_release_policy: teacher_only
+  human_review_completed: false
+  event: sydneysiege
+  variant: full
+hardware:
+  device_map:
+    agent_emotion: cuda:0
+    agent_exaggeration: cuda:0
+    agent_bias: cuda:0
+    agent_commonsense: cuda:0
+    communication: cuda:0
+runtime:
+  runs_root: ../outputs/runs
+  seed: 42
+  select_metric: binary_f1
+  deterministic: true
+  sequential_agents: true
+  use_cuda_streams: false
+  debug_sync: true
+  log_steps: 20
+  num_workers: 0
+data:
+  label_schema: pheme_rumour_v1
+  freeze_manifest: ../data/pheme_teacher/freeze_manifest.json
+  train_file: ../data/pheme_teacher/split_sydneysiege/train.csv
+  val_file: ../data/pheme_teacher/split_sydneysiege/val.csv
+  test_file: ../data/pheme_teacher/split_sydneysiege/test.csv
+  max_length: 384
+  use_pseudo_labels: true
+training:
+  batch_size: 4
+  grad_accum_steps: 2
+  epochs: 6
+  warmup_epochs: 2
+  collab_epochs: 4
+  learning_rate: 5.0e-05
+  weight_decay: 0.01
+  grad_clip: 1.0
+  loss_weights:
+    final: 1.0
+    emotion: 0.6
+    exaggeration: 0.6
+    bias: 0.6
+    commonsense: 0.6
+    cons: 0.5
+    pred: 0.2
+    div: 0.1
+    gate: 0.01
+evaluation:
+  threshold: 0.5
+  threshold_policy: fixed_before_test

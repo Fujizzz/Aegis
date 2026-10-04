@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aegis-news"
+version = "0.1.0"
+description = "Four-agent LoRA collaboration and two-stage LLM news classification"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "Fujizzz"}]
+dependencies = []
+
+[project.optional-dependencies]
+neural = [
+  "torch==2.6.0", "numpy==2.2.6", "pandas==2.2.3", "PyYAML==6.0.2",
+  "transformers==4.49.0", "peft==0.14.0", "accelerate==1.4.0",
+  "tokenizers==0.21.1", "safetensors==0.5.3", "huggingface-hub==0.29.3", "tqdm==4.67.1"
+]
+api = ["openai>=1.0,<3", "httpx>=0.27,<1", "PyYAML==6.0.2"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+mafnd = "mafnd.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[project.urls]
+Repository = "https://github.com/Fujizzz/Aegis"

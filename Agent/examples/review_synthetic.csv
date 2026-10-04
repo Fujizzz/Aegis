@@ -1,0 +1,8 @@
+sample_id,title,text,subject,date,label,event
+fix,Example A,Synthetic fabricated claim A.,simulation,,0,synthetic
+harm,Example B,Synthetic fabricated claim B.,simulation,,0,synthetic
+keep_real,,Synthetic factual report C.,simulation,,1,synthetic
+keep_fake,Example D,Synthetic fabricated claim D.,simulation,,0,synthetic
+review_fail,,Synthetic factual report E.,simulation,,1,synthetic
+first_fail,Example F,Synthetic fabricated claim F.,simulation,,0,synthetic
+retry,Example G,Synthetic factual report G.,simulation,,1,synthetic

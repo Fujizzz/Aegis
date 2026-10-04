@@ -1,0 +1,7 @@
+# Windows/Linux CPU audit profile, Python 3.12.14; no model loading.
+numpy==2.3.5
+pandas==3.0.1
+PyYAML==6.0.2
+python-dateutil==2.9.0.post0
+six==1.17.0
+tzdata==2026.4

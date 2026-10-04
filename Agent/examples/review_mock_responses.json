@@ -1,0 +1,12 @@
+{
+  "fix": {"first": 0.4, "review": 0.8, "direct": 0.8},
+  "harm": {"first": 0.8, "review": 0.2, "direct": 0.8},
+  "keep_real": {"first": 0.2, "direct": 0.2},
+  "keep_fake": {"first": 0.95, "direct": 0.95},
+  "review_fail": {"first": 0.4, "direct": 0.2,
+    "faults": {"review/reference/0": ["error", "error", "error"]}},
+  "first_fail": {"first": 0.8, "direct": 0.8,
+    "faults": {"screening/Emotion/Sentiment/0": ["error", "error", "error"]}},
+  "retry": {"first": 0.6, "review": 0.2, "direct": 0.2,
+    "faults": {"direct/classification/0": ["malformed"]}}
+}

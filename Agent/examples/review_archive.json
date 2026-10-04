@@ -1,0 +1,6 @@
+{
+  "input_csv": "review_synthetic.csv",
+  "label_schema": "archive_fake_v1",
+  "model": "deepseek-chat",
+  "reference_context": "metadata_only"
+}

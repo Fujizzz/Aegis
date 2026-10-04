@@ -1,0 +1,6 @@
+{
+  "input_csv": "../../data/pheme_teacher/split_germanwings/test.csv",
+  "label_schema": "pheme_rumour_v1",
+  "model": "deepseek-chat",
+  "reference_context": "metadata_only"
+}
